@@ -66,6 +66,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 });
 
 app.get('/', function(req, res) {
-    res.send('<h1>hello.</h1><blockquote>!pandie <p> tcomplimentme <br> thitme <br> tqizai</p></blockquote>')
+    res.send('<h1>hello. i am a discord pandie-bot</h1><p><a href="https://discordapp.com/oauth2/authorize?&client_id=434474046860689428&scope=bot&permissions=0">add pandie bot!</a></p><blockquote>!pandie <p> complimentme <br> hitme <br> qizai</p></blockquote>')
 });
 app.listen(port);
