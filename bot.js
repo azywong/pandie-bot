@@ -1,10 +1,11 @@
 var Discord = require('discord.io');
 var data = require('./data.json');
 var fs = require('fs');
-var http = require('http');
+var express = require('express');
 
 
-var port = process.env.PORT || 8080;
+var app = express();
+var port = process.env.PORT || 5000;
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
@@ -64,11 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
      }
 });
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
+app.get('/', function(req, res) {
+    res.send('<h1>hello.</h1><blockquote>!pandie <p> tcomplimentme <br> thitme <br> tqizai</p></blockquote>')
 });
-
-server.listen(port, hostname, () => {
-  console.log("Server running");
-});
+app.listen(port);

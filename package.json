@@ -5,6 +5,7 @@
   "main": "bot.js",
   "author": "sleepypandie",
   "dependencies": {
-    "discord.io": "github:woor/discord.io#gateway_v6"
+    "discord.io": "github:woor/discord.io#gateway_v6",
+    "express": "^4.16.3"
   }
 }
