@@ -36,6 +36,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: data.compliments[Math.floor(Math.random() * data.compliments.length)]
                 });
                 break;
+            case 'compliment':
+                if (args.length == 2) {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: args[1] + " " + data.compliments[Math.floor(Math.random() * data.compliments.length)]
+                    });
+                } else {
+                   bot.sendMessage({
+                        to: channelID,
+                        message: 'I was confused! \n  Usage is !pandie compliment <user>'
+                    });
+                }
+                break;
             case 'hitme':
                 fs.readdir("images/qizai",  function (err, files) {
                     if (err) {
@@ -58,7 +71,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             default:
                 bot.sendMessage({
                     to: channelID,
-                    message: 'My current command list:\n\tcomplimentme\n\thitme\n\tqizai\n'
+                    message: 'My current command list:\n\tcomplimentme\n\tcompliment <user>\n\thitme\n\tqizai\n'
                 });
                 break;
          }
@@ -66,6 +79,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 });
 
 app.get('/', function(req, res) {
-    res.send('<h1>hello. i am a discord pandie-bot</h1><p>Sometimes I go to sleep randomly when my heroku server is idle /////</p><p><a href="https://discordapp.com/oauth2/authorize?&client_id=434474046860689428&scope=bot&permissions=0">add pandie bot!</a></p><blockquote>!pandie <p> complimentme <br> hitme <br> qizai</p></blockquote>')
+    res.send('<h1>hello. i am a discord pandie-bot</h1><p>Sometimes I go to sleep randomly when my heroku server is idle /////</p><p><a href="https://discordapp.com/oauth2/authorize?&client_id=434474046860689428&scope=bot&permissions=0">add pandie bot!</a></p><blockquote>!pandie <p> complimentme <br> compliment <user> <br> hitme <br> qizai</p></blockquote>')
 });
 app.listen(port);
