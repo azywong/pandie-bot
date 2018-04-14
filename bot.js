@@ -1,13 +1,7 @@
 var Discord = require('discord.io');
-var logger = require('winston');
 var data = require('./data.json');
 var fs = require('fs');
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
+
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: process.env.token,
@@ -15,9 +9,9 @@ var bot = new Discord.Client({
 });
 
 bot.on('ready', function (evt) {
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+    console.log('Connected');
+    console.log('Logged in as: ');
+    console.log(bot.username + ' - (' + bot.id + ')');
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
@@ -40,7 +34,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'hitme':
                 fs.readdir("images/qizai",  function (err, files) {
                     if (err) {
-                        logger.error(err);
+                        console.log(err);
                     }
                     var file = files[Math.floor(Math.random() * files.length)];
                     bot.uploadFile({
