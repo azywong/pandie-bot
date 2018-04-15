@@ -7,6 +7,9 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 5000;
 
+app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/static'));
+
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: process.env.token,
@@ -69,9 +72,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
                 break;
             default:
+                var message = "My current command list:";
+                for (var i = 0; i < data.commands.length; i++) {
+                    message += "\n\t" + data.commands[i];
+                };
                 bot.sendMessage({
                     to: channelID,
-                    message: 'My current command list:\n\tcomplimentme\n\tcompliment <user>\n\thitme\n\tqizai\n'
+                    message: message
                 });
                 break;
          }
@@ -79,6 +86,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 });
 
 app.get('/', function(req, res) {
-    res.send('<h1>hello. i am a discord pandie-bot</h1><p>Sometimes I go to sleep randomly when my heroku server is idle /////</p><p><a href="https://discordapp.com/oauth2/authorize?&client_id=434474046860689428&scope=bot&permissions=0">add pandie bot!</a></p><blockquote>!pandie <p> complimentme <br> compliment &lt;user&gt; <br> hitme <br> qizai</p></blockquote>')
+    res.render('index', { title: 'pandie-bot', commands: data.commands })
 });
 app.listen(port);

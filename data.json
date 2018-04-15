@@ -1,4 +1,10 @@
 {
+	"commands": [
+		"complimentme",
+		"compliment <user>",
+		"hitme",
+		"qizai"
+	],
 	"compliments": [
 		"You are un-bear-ably cute!",
 		"Have a beary nice day!",

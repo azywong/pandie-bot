@@ -1,0 +1,44 @@
+body {
+	background-color: #ffcfb5;
+	color: #4f4948;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 11pt;
+}
+.main {
+	background-color: #ffffff;
+	margin-top: 100px;
+	padding: 10px;
+	border-radius: 20px;
+}
+h1 {
+	font-family: 'Lobster', cursive;
+}
+h2 {
+	color: #ff5e48;
+	font-family: 'Lobster', cursive;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #ff8256;
+}
+
+.nav-link {
+	color: #ff8256;
+	font-family: 'Lobster', cursive;
+	font-size: 20px;
+}
+
+.tab-content {
+	margin-top: 25px;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+.tab-content ul {
+	list-style-type: none;
+	padding: 0;
+}
+.tab-content b {
+	color: #dc3545;
+}
