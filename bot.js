@@ -34,17 +34,35 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         args = args.splice(1);
         switch(cmd) {
             case 'complimentme':
-                bot.sendMessage({
-                    to: channelID,
-                    message: data.compliments[Math.floor(Math.random() * data.compliments.length)]
-                });
+                var compliment = data.compliments[Math.floor(Math.random() * data.compliments.length)];
+                if (compliment.image) {
+                    bot.uploadFile({
+                        to: channelID,
+                        file: "images/compliments/" + compliment.image,
+                        message: compliment.text
+                    });
+                } else {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: compliment.text
+                    });
+                }
                 break;
             case 'compliment':
                 if (args.length == 2) {
-                    bot.sendMessage({
-                        to: channelID,
-                        message: args[1] + " " + data.compliments[Math.floor(Math.random() * data.compliments.length)]
-                    });
+                    var compliment = data.compliments[Math.floor(Math.random() * data.compliments.length)];
+                    if (compliment.image) {
+                        bot.uploadFile({
+                            to: channelID,
+                            file: "images/compliments/" + compliment.image,
+                            message: args[1] + " " + compliment.text
+                        });
+                    } else {
+                        bot.sendMessage({
+                            to: channelID,
+                            message: args[1] + " " + compliment.text
+                        });
+                    }
                 } else {
                    bot.sendMessage({
                         to: channelID,
@@ -63,7 +81,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         file: "images/qizai/" + file,
                         message: 'hit!'
                     });
-                })
+                });
                 break;
             case 'qizai':
                 bot.sendMessage({
